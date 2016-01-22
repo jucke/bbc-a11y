@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>BBC A11y Chrome Developer Tool</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 10px;
+				background-color: #efefef;
+			}
+			h1 {
+				margin: 0;
+				margin-bottom: 5px;
+			}
+			tr.pass td {
+				background-color: green;
+			}
+			tr.fail td {
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="panel">
+			<h1>BBC A11y is validating...</h1>
+		</div>
+
+		<script src="plastiq.min.js"></script>
+		<script src="a11y.bundle.js"></script>
+	  <script src="messaging.js"></script>
+		<script src="panel.js"></script>
+	</body>
+</html>
