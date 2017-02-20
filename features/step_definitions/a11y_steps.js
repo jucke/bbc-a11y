@@ -123,6 +123,7 @@ defineSupportCode(function({ Given, When, Then }) {
   Then('it should pass with:', function (string) {
     var actualOutput = (this.stdout + this.stderr)
     assert(actualOutput.indexOf(string) > -1, "Expected: " + string + "\nActual:   " + actualOutput)
+    assert.equal(this.exitCode, 0)
   })
 
   Then('it fails with the message:', function (message) {

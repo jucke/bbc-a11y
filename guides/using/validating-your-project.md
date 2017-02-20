@@ -160,3 +160,33 @@ option:
 
 See the (custom reporter feature)[../../features/custom_reporter.feature] for
 an example of the reporter API.
+
+## Advanced Usage: Manually setting up the browser window
+
+Some pages may need additional setup before validation should start. For example
+you may need to log into a members area before a page can be visited. In these
+cases, bbc-a11y provides a way to control the navigation, by passing a `visit`
+function to the page configuration object.
+
+The `visit` function receives an `iframe` as an argument and should return a
+promise that resolves when the setup is complete and validation can begin.
+
+For example, here's how you might navigate to a page that was only accessible
+after loggin in:
+
+```js
+page('Members area (after logging in)', {
+  visit: function (frame) {
+    frame.src = 'http://mywebsite.com/login'
+    return new Promise(function (validate) {
+      frame.onload = function () {
+        var loginPage = frame.contentDocument
+        loginPage.getElementById('username').value = 'some-username'
+        loginPage.getElementById('password').value = 'some-password'
+        loginPage.getElementById('loginButton').click()
+        frame.onload = validate
+      }
+    })
+  }
+})
+```
