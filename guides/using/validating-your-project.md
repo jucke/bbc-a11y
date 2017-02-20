@@ -172,7 +172,7 @@ The `visit` function receives an `iframe` as an argument and should return a
 promise that resolves when the setup is complete and validation can begin.
 
 For example, here's how you might navigate to a page that was only accessible
-after loggin in:
+after logging in:
 
 ```js
 page('Members area (after logging in)', {
